@@ -1,6 +1,3 @@
-if (typeof define !== 'function') { var define = require('amdefine')(module); }
-define(['./lib/namespace_langs'], function(namespace_langs) {
-'use strict';
 /*
  * InstaView - a Mediawiki to HTML converter in JavaScript
  * Version 0.6.1
@@ -33,7 +30,7 @@ define(['./lib/namespace_langs'], function(namespace_langs) {
  * - Support for coloured links (AJAX)
  */
 
-
+var namespace_langs = require("./lib/namespace_langs");
 var InstaView = {}
 
 // options
@@ -959,5 +956,4 @@ function bit_rol(num, cnt)
   return (num << cnt) | (num >>> (32 - cnt));
 }
 
-return InstaView;
-});
+module.exports = InstaView;
