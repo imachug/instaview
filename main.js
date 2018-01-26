@@ -7,6 +7,9 @@
  *
  * Changelog:
  *
+ * 0.6.3
+ * - Replace <p> with <p></p> all the times
+ *
  * 0.6.2
  * - Add <br /> instead of <br> for XHTML support
  * - Replace <li> by <li></li> for the same reason
@@ -577,7 +580,9 @@ InstaView.convert = function(wiki)
 		
 		// handle paragraphs
 		if ($$('')) {
-			if (p = (remain()>1 && ll[1]==(''))) endl('<p><br />')
+			if (p = (remain()>1 && ll[1]==(''))) {
+				endl('<p><br /></p>')
+			}
 		} else {
 			if(!p) {
 				ps('<p>')
