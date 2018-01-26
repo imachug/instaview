@@ -586,7 +586,6 @@ InstaView.convert = function(wiki)
 		} else {
 			if(!p) {
 				ps('<p>')
-				p=1
 				ps(parse_inline_nowiki(ll[0]) + ' ')
 				ps('</p>')
 			} else {
