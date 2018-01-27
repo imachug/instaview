@@ -13,7 +13,6 @@
  * 0.6.2
  * - Add <br /> instead of <br> for XHTML support
  * - Replace <li> by <li></li> for the same reason
- * - Replace <p> with <p></p> in some cases
  *
  * 0.6.1
  * - Fixed problem caused by \r characters
@@ -584,11 +583,9 @@ InstaView.convert = function(wiki)
 		} else {
 			if(!p) {
 				ps('<p>')
-				ps(parse_inline_nowiki(ll[0]) + ' ')
-				ps('</p>')
-			} else {
-				ps(parse_inline_nowiki(ll[0]) + ' ')
+				p=1
 			}
+			ps(parse_inline_nowiki(ll[0]) + ' ')
 		}
 		
 		sh();
