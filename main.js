@@ -1,6 +1,6 @@
 /*
  * InstaView - a Mediawiki to HTML converter in JavaScript
- * Version 0.6.2
+ * Version 0.6.1
  * Copyright (C) Pedro Fayolle 2005-2006
  * http://en.wikipedia.org/wiki/User:Pilaf
  * Distributed under the BSD license
@@ -180,7 +180,7 @@ InstaView.convert = function(wiki)
 			switch (l_match[1].charAt(l_match[1].length-1)) {
 			
 				case '*': case '#':
-					ps('<li>' + parse_inline_nowiki(l_match[2]) + '</li>'); break
+					ps('<li>' + parse_inline_nowiki(l_match[2])); break
 					
 				case ';':
 					ps('<dt>')
@@ -580,9 +580,7 @@ InstaView.convert = function(wiki)
 		
 		// handle paragraphs
 		if ($$('')) {
-			if (p = (remain()>1 && ll[1]==(''))) {
-				endl('<p><br /></p>')
-			}
+			if (p = (remain()>1 && ll[1]==(''))) endl('<p><br>')
 		} else {
 			if(!p) {
 				ps('<p>')
