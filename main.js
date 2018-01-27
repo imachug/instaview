@@ -7,6 +7,9 @@
  *
  * Changelog:
  *
+ * 0.6.4
+ * - Add more protocols
+ *
  * 0.6.3
  * - Revert 0.6.2
  *
@@ -533,10 +536,9 @@ InstaView.convert = function(wiki)
 			replace(/\[\[([^\]]*?:)?(.*?)( *\(.*?\))?\|\]\]/g, f("<a href='?$1$2$3'>$2</a>", InstaView.conf.paths.articles)).
 			
 			// External links
-			replace(/\[(https?|news|ftp|mailto|gopher|irc):(\/*)([^\]]*?) (.*?)\]/g, "<a href='$1:$2$3'>$4</a>").
-			replace(/\[http:\/\/(.*?)\]/g, "<a href='http://$1'>[#]</a>").
-			replace(/\[(news|ftp|mailto|gopher|irc):(\/*)(.*?)\]/g, "<a href='$1:$2$3'>$1:$2$3</a>").
-			replace(/(^| )(https?|news|ftp|mailto|gopher|irc):(\/*)([^ $]*)/g, "$1<a href='$2:$3$4'>$2:$3$4</a>").
+			replace(/\[(https?|news|ftp|mailto|gopher|irc|zero):(\/*)([^\]]*?) (.*?)\]/g, "<a href='$1:$2$3'>$4</a>").
+			replace(/\[(https?|news|ftp|mailto|gopher|irc|zero):(\/*)([^\]]*?)\]/g, "<a href='$1:$2$3'>$1:$2$3</a>").
+			replace(/(^| )(https?|news|ftp|mailto|gopher|irc|zero):(\/*)([^ $]*)/g, "$1<a href='$2:$3$4'>$2:$3$4</a>").
 			
 			replace('__NOTOC__','').
 			replace('__NOEDITSECTION__','');
