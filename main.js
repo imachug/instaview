@@ -8,7 +8,7 @@
  * Changelog:
  *
  * 0.6.3
- * - Replace <p> with <p></p> all the times
+ * - Revert 0.6.2
  *
  * 0.6.2
  * - Add <br /> instead of <br> for XHTML support
