@@ -7,6 +7,9 @@
  *
  * Changelog:
  *
+ * 0.6.5
+ * - Add [[:wiki:article|replaced]] links support
+ *
  * 0.6.4
  * - Add more protocols
  *
@@ -515,6 +518,10 @@ InstaView.convert = function(wiki)
 			replace(/~{5}(?!~)/g, date).
 			replace(/~{4}(?!~)/g, InstaView.conf.user.name+' '+date).
 			replace(/~{3}(?!~)/g, InstaView.conf.user.name).
+
+			// [[:Category:...|Replaced]], [[:Image:...|Replaced]], etc...
+			replace(RegExp('\\[\\[:((?:'+InstaView.conf.locale.category+'|'+InstaView.conf.locale.image+'|'+InstaView.conf.wiki.interwiki+'):.*?)\\|(.*?)\\]\\]','gi'), "<a href='"+InstaView.conf.paths.articles+"$1'>$2</a>").
+			replace(RegExp('\\[\\[(?:'+InstaView.conf.locale.category+'|'+InstaView.conf.wiki.interwiki+'):.*?\\|(.*?)\\]\\]','gi'),'').
 			
 			// [[:Category:...]], [[:Image:...]], etc...
 			replace(RegExp('\\[\\[:((?:'+InstaView.conf.locale.category+'|'+InstaView.conf.locale.image+'|'+InstaView.conf.wiki.interwiki+'):.*?)\\]\\]','gi'), "<a href='"+InstaView.conf.paths.articles+"$1'>$1</a>").
