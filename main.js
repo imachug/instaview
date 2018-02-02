@@ -1,11 +1,14 @@
 /*
  * InstaView - a Mediawiki to HTML converter in JavaScript
- * Version 0.6.1
- * Copyright (C) Pedro Fayolle 2005-2006
+ * Version 0.6.6
+ * Copyright (C) Pedro Fayolle 2005-2006; Ivanq 2018
  * http://en.wikipedia.org/wiki/User:Pilaf
  * Distributed under the BSD license
  *
  * Changelog:
+ *
+ * 0.6.6
+ * - Remove <math> support
  *
  * 0.6.5
  * - Add [[:wiki:article|replaced]] links support
@@ -60,7 +63,6 @@ InstaView.conf =
 	paths: {
 		base_href: '/',
 		articles: '/wiki/',
-		math: '/math/',
 		images: '',
 		images_fallback: 'http://upload.wikimedia.org/wikipedia/commons/',
 		magnify_icon: 'skins/common/images/magnify-clip.png'
@@ -499,12 +501,6 @@ InstaView.convert = function(wiki)
 		
 		str = parse_inline_images(str);
 		str = parse_inline_formatting(str);
-		
-		// math
-		while (aux_match = str.match(/<(?:)math>(.*?)<\/math>/i)) {
-			var math_md5 = hex_md5(aux_match[1]);
-			str = str.replace(aux_match[0], f("<img src='?.png'>", InstaView.conf.paths.math+math_md5));
-		}
 		
 		// Build a Mediawiki-formatted date string
 		var date = new Date;
